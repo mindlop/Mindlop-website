@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindlop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: Orbitron, sans-serif;
+        background: black;
+        color: white;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg, #111, #000, #111);
+        background-size: 300% 300%;
+        animation: bgMove 8s infinite linear;
+        z-index: -1;
+    }
+
+    @keyframes bgMove {
+        0% { background-position: 0 0; }
+        100% { background-position: 300% 300%; }
+    }
+
+    .menu-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        font-size: 35px;
+        cursor: pointer;
+        z-index: 9999;
+        user-select: none;
+    }
+
+    #sidebar {
+        position: fixed;
+        left: -280px;
+        top: 0;
+        width: 260px;
+        height: 100%;
+        background: #000;
+        padding: 30px;
+        transition: 0.4s;
+        z-index: 10;
+    }
+
+    #sidebar h2 {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        font-size: 28px;
+    }
+
+    #sidebar a {
+        display: block;
+        color: white;
+        font-size: 22px;
+        margin: 25px 0;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .close-btn {
+        font-size: 28px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+
+    .center-box {
+        height: 60vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .glow {
+        font-size: 55px;
+        text-align: center;
+        text-shadow: 0 0 15px white;
+    }
+
+    footer {
+        background: #050505;
+        padding: 20px;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    footer .btn img { width: 28px; }
+
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 80%;
+        margin: 15px auto;
+        padding: 12px;
+        border-radius: 30px;
+        background: #111;
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+    .page {
+        display: none;
+        padding: 30px;
+    }
+
+    .page h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px white;
+    }
+
+    .item-box {
+        background: #111;
+        padding: 20px;
+        border-radius: 12px;
+        margin: 25px 0;
+    }
+
+    .get-btn {
+        display: block;
+        text-align: center;
+        width: 120px;
+        margin: 15px auto 0;
+        padding: 10px;
+        background: #222;
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="menu-btn" onclick="openMenu()">⋮</div>
+
+<div id="sidebar">
+    <div class="close-btn" onclick="closeMenu()">✕</div>
+    <h2>Menu</h2>
+
+    <a onclick="openSupport()">Support</a>
+    <a onclick="showPage('articles')">Articles</a>
+    <a onclick="showPage('market')">Market</a>
+    <a onclick="showPage('homePage')">Home</a>
+</div>
+
+<div id="homePage">
+    <div class="center-box">
+        <h1 class="glow">Mindlop</h1>
+    </div>
+
+    <footer>
+        <h2>About Me</h2>
+
+        <a class="btn" href="https://www.instagram.com/master_mind_18.0" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/fa0476/instagram-new.png"> Instagram
+        </a>
+
+        <a class="btn" href="https://youtube.com/@mindlop-yt" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/fa0000/youtube-play.png"> YouTube
+        </a>
+
+        <a class="btn" href="https://discord.gg/yC5Tn9Krg6" target="_blank">
+            <img src="https://img.icons8.com/?size=100&id=25629&format=png&color=ffffff"> Discord
+        </a>
+
+        <div class="support" onclick="openSupport()">SUPPORT</div>
+    </footer>
+</div>
+
+<!-- Articles -->
+<div id="articles" class="page">
+    <h1>Articles</h1>
+
+    <div class="item-box">
+        <strong>Latest News</strong>
+        <p>- lettest news come from our khabri mindlop got a bmw.... 
+            <a href="https://discord.gg/yC5Tn9Krg6" target="_blank">[ more ]</a>
+        </p>
+    </div>
+</div>
+
+<!-- MARKET PAGE -->
+<div id="market" class="page">
+    <h1>Market</h1>
+
+    <div class="item-box">
+        <strong>Mindlop launched his own hoodie!</strong>
+        <p>Grab the exclusive hoodie now before it goes out of stock 🔥</p>
+
+        <div class="get-btn" onclick="directDiscord()">GET</div>
+    </div>
+</div>
+
+<script>
+function openMenu() {
+    document.getElementById("sidebar").style.left = "0";
+}
+
+function closeMenu() {
+    document.getElementById("sidebar").style.left = "-280px";
+}
+
+function openSupport() {
+    window.location.href = "mailto:Mr.nykcontect@gmail.com";
+}
+
+function directDiscord() {
+    window.location.href = "https://discord.gg/yC5Tn9Krg6";
+}
+
+function showPage(page) {
+    document.getElementById("homePage").style.display = "none";
+    document.querySelectorAll(".page").forEach(p => p.style.display = "none");
+    document.getElementById(page).style.display = "block";
+    closeMenu();
+}
+</script>
+
+</body>
+</html>
